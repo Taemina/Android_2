@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DD</string>
+    <string name="navigation_drawer_open">Открыть навигационный ящик</string>
+    <string name="navigation_drawer_close">Закрыть навигационный ящик</string>
+    <string name="nav_header_name_user">Имя пользователя</string>
+    <string name="nav_header_user_email">email@mail.ru</string>
+    <string name="nav_header_desc">Заголовок навигации</string>
+    <string name="action_settings">Настройки</string>
+    <string name="action_info">Информация</string>
+    <string name="action_plus">Добавить</string>
+    <string name="menu_home">Домой</string>
+    <string name="menu_gallery">Галерея</string>
+    <string name="menu_tools">Инструменты</string>
+    <string name="menu_communicate">Обратная связь</string>
+    <string name="menu_send">Написать</string>
+    <string name="menu_info"> О разработчике</string>
+</resources>
