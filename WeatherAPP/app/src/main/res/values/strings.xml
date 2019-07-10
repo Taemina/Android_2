@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="title">Weather</string>
+    <string name="city">City</string>
+    <string name="CityButton">Choose</string>
+    <string name="AddButton">Add</string>
+    <string name="humidity">Humidity</string>
+    <string name="temp">23</string>
+    <string name="data">20.05.2019</string>
+    <string name="wind">Wind</string>
+    <string name="pressure">Pressure</string>
+    <string name="weather_histiry">Weather Histiry</string>
+</resources>

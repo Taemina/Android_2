@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cities_list">
+        <item>Москва</item>
+        <item>Санкт-Петербург</item>
+        <item>Екатеринбург</item>
+        <item>Новосибирск</item>
+        <item>Самара</item>
+    </string-array>
+    <string-array name="weather_temp_list">
+        <item>+23</item>
+        <item>-3</item>
+        <item>+12</item>
+        <item>+20</item>
+        <item>-12</item>
+    </string-array>
+    <integer-array name="weather_list">
+        <item>@drawable/ic_spite_overcloud_rain</item>
+        <item>@drawable/ic_spite_overcloud_rainfall_1</item>
+        <item>@drawable/ic_spite_sun</item>
+        <item>@drawable/ic_spite_sun_rain</item>
+        <item>@drawable/ic_spite_sun_snow</item>
+    </integer-array>
+</resources>
