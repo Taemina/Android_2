@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomSquareView">
+        <attr name="cv_Color" format="color" />
+    <attr name="cv_Width" format="integer"/>
+        <attr name="cv_Length" format="integer"/>
+</declare-styleable>
+</resources>

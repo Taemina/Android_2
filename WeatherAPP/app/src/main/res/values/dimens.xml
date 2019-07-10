@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="WidthImageTemp">50dp</dimen>
+    <dimen name="dimenHeightImageTemp">50dp</dimen>
+    <dimen name="dimenHeight">70dp</dimen>
+    <dimen name="dimenTextTitle">20dp</dimen>
+    <dimen name="padding">10dp</dimen>
+    <dimen name="dimenTextCity">30dp</dimen>
+    <dimen name="dimenTextTemp">25dp</dimen>
+    <dimen name="dimenTexTData">20dp</dimen>
+    <dimen name="dimenMarginTop">4dp</dimen>
+    <dimen name="dimenMarginRightTemp">70dp</dimen>
+</resources>
