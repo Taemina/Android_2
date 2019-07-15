@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 choicePressure = true;
             }
             nextActivity.putExtra(PRESSURE_CITY, choicePressure);
+            // старт службы
+            startService(new Intent(MainActivity.this, WeatherInfoService.class));
             startActivity(nextActivity);
         }
     }

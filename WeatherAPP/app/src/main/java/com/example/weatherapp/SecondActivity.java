@@ -1,4 +1,4 @@
-package com.example.weatherapp;
+﻿package com.example.weatherapp;
 
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -75,6 +75,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             elements2.addView(textViewManual);
 
         }
+//добавление сенсоров 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensorTemperature = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
         sensorManager.registerListener(listenerTemperature, sensorTemperature,

@@ -23,6 +23,12 @@
         <activity
             android:name=".WeatherHistoryActivity"
             android:screenOrientation="portrait"/>
+        <service
+            android:name=".WeatherInfoService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+
     </application>
 
 </manifest>
