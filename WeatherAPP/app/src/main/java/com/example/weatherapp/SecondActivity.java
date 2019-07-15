@@ -1,4 +1,4 @@
-﻿package com.example.weatherapp;
+package com.example.weatherapp;
 
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -75,12 +75,16 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             elements2.addView(textViewManual);
 
         }
-//добавление сенсоров 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensorTemperature = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
+        sensorHumidity = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
+
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
         sensorManager.registerListener(listenerTemperature, sensorTemperature,
                 SensorManager.SENSOR_DELAY_NORMAL);
-        sensorHumidity = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
         sensorManager.registerListener(listenerHumidity, sensorHumidity,
                 SensorManager.SENSOR_DELAY_NORMAL);
     }

@@ -1,6 +1,7 @@
 package com.example.weatherapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -32,7 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initViews();
         btnChoiceCity.setOnClickListener(this);
 
-
+        SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
+        loadCity(sharedPref);
     }
 
 
@@ -48,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 nextActivity.putExtra(NAME_CITY, String.valueOf(CITY));
             } else {
                 nextActivity.putExtra(NAME_CITY, cityName);
+                SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
+                saveCity(sharedPref);
             }
             boolean choiceWind = false;
             if (cbWind.isChecked()) {
@@ -69,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(NAME_CITY, String.valueOf(etEnteredCity.getText()));
+       outState.putString(NAME_CITY, String.valueOf(etEnteredCity.getText()));
     }
 
     @Override
@@ -84,5 +88,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         etEnteredCity = findViewById(R.id.city_edit);
         cbWind = findViewById(R.id.wind);
         cbPressure = findViewById(R.id.pressure);
+    }
+
+    // сохраняем настройки
+    private void saveCity(SharedPreferences sharedPref){
+        String city = etEnteredCity.getText().toString();
+
+        // для сохранения настроек надо воспользоваться классом Editor
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        // теперь в Editor установим значения
+        editor.putString("city",city);
+
+        // и сохраним файл настроек
+        editor.apply();
+    }
+
+    private void loadCity(SharedPreferences sharedPref){
+        String valueFirst = sharedPref.getString( "city","city");
+        if (valueFirst.compareToIgnoreCase("city") != 0 &&
+                valueFirst.compareToIgnoreCase("город") != 0) {
+           etEnteredCity.setText(valueFirst);
+        }
+
     }
 }
