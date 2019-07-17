@@ -8,6 +8,8 @@
     <string name="temp">23</string>
     <string name="data">20.05.2019</string>
     <string name="wind">Wind</string>
+    <string name="wind_end">m/s</string>
     <string name="pressure">Pressure</string>
+    <string name="pressure_end">hpa</string>
     <string name="weather_histiry">Weather Histiry</string>
 </resources>

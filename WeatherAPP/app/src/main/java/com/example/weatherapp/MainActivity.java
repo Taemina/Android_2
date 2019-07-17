@@ -17,6 +17,7 @@ import static com.example.weatherapp.fragments.WeatherFragment.CITY;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String NAME_CITY = "NAME_CITY";
+    private static final String CITY = "CITY";
     public static final String WIND_CITY = "WIND_CITY";
     public static final String PRESSURE_CITY = "PRESSURE_CITY";
     private EditText etEnteredCity;
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
         loadCity(sharedPref);
     }
-
 
 
     @Override
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-       outState.putString(NAME_CITY, String.valueOf(etEnteredCity.getText()));
+        outState.putString(NAME_CITY, String.valueOf(etEnteredCity.getText()));
     }
 
     @Override
@@ -91,24 +91,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     // сохраняем настройки
-    private void saveCity(SharedPreferences sharedPref){
+    private void saveCity(SharedPreferences sharedPref) {
         String city = etEnteredCity.getText().toString();
 
         // для сохранения настроек надо воспользоваться классом Editor
         SharedPreferences.Editor editor = sharedPref.edit();
 
         // теперь в Editor установим значения
-        editor.putString("city",city);
+        editor.putString(CITY, city);
 
         // и сохраним файл настроек
         editor.apply();
     }
 
-    private void loadCity(SharedPreferences sharedPref){
-        String valueFirst = sharedPref.getString( "city","city");
+    private void loadCity(SharedPreferences sharedPref) {
+        String valueFirst = sharedPref.getString(CITY, "city");
         if (valueFirst.compareToIgnoreCase("city") != 0 &&
                 valueFirst.compareToIgnoreCase("город") != 0) {
-           etEnteredCity.setText(valueFirst);
+            etEnteredCity.setText(valueFirst);
         }
 
     }

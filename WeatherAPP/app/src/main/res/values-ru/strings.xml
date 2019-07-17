@@ -9,6 +9,8 @@
     <string name="temp">23</string>
     <string name="data">20.05.2019</string>
     <string name="wind">Ветер</string>
+    <string name="wind_end">м/с</string>
     <string name="pressure">Давление</string>
+    <string name="pressure_end">гПа</string>
     <string name="weather_histiry">История Погоды</string>
 </resources>
