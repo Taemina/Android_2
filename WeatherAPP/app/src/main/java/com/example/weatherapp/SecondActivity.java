@@ -34,7 +34,7 @@ import static com.example.weatherapp.MainActivity.WIND_CITY;
 
 public class SecondActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String KEY = "53b74ccc7e98175a23f392a084a3edd3";
-
+    private static final String URL = "http://api.openweathermap.org/";
     private OpenWeather openWeather;
     private TextView tvСity;
     private TextView tvDates;
@@ -49,7 +49,8 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     private SensorManager sensorManager;
     private Sensor sensorTemperature;
     private Sensor sensorHumidity;
-
+    private NoteDataSource notesDataSource;     // Источник данных
+    private NoteDataReader noteDataReader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,9 +76,15 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensorTemperature = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
         sensorHumidity = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
+        initDataSource();
+
 
     }
-
+    private void initDataSource() {
+        notesDataSource = new NoteDataSource(getApplicationContext());
+        notesDataSource.open();
+        noteDataReader = notesDataSource.getNoteDataReader();
+    }
     @Override
     protected void onResume() {
         super.onResume();
@@ -156,7 +163,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
     private void initRetrofit() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://api.openweathermap.org/") // Базовая часть адреса
+                .baseUrl(URL) // Базовая часть адреса
                 // Конвертер, необходимый для преобразования JSON'а в объекты
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -182,6 +189,8 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                                 info = getResources().getString(R.string.pressure) + " " + Float.toString(response.body().getMain().getPressure()) + " " + getResources().getString(R.string.pressure_end);
                                 addViewGroup(info);
                             }
+                            notesDataSource.addNote(tvСity.getText().toString(),
+                                    tvTemp.getText().toString());
                         }
                     }
 
@@ -189,7 +198,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                     public void onFailure(@NonNull Call<WeatherRequest> call,
                                           @NonNull Throwable throwable) {
 
-                        tvTemp.setText("Error");
+                        tvTemp.setText(getResources().getString(R.string.error));
                     }
                 });
     }

@@ -7,14 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.weatherapp.Note;
+import com.example.weatherapp.NoteDataReader;
 import com.example.weatherapp.R;
 
 public class WeatherHistoryAdapter extends RecyclerView.Adapter<WeatherHistoryAdapter.ViewHolder> {
     private String[] data;
 
 
-    public WeatherHistoryAdapter(String[] data) {
-        this.data = data;
+    private final NoteDataReader noteDataReader;
+
+
+    public WeatherHistoryAdapter(NoteDataReader noteDataReader) {
+        this.noteDataReader = noteDataReader;
     }
 
     @NonNull
@@ -28,22 +33,29 @@ public class WeatherHistoryAdapter extends RecyclerView.Adapter<WeatherHistoryAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(data[position]);
+        holder.bind(noteDataReader.getPosition(position));
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return noteDataReader.getCount();
     }
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView textView;
+        private final TextView textNote;
+        private Note note;
 
-        public ViewHolder(TextView view) {
-            super(view);
-            textView = view;
+        public ViewHolder(View itemView) {
+            super(itemView);
+            textNote = itemView.findViewById(R.id.textView);
 
+
+        }
+        public void bind(Note note) {
+            this.note = note;
+            String str=note.getNameCity()+": "+note.getWeather();
+            textNote.setText(str);
         }
     }
 }
