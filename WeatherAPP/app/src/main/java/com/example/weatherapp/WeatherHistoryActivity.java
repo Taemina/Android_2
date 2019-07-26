@@ -21,14 +21,18 @@ public class WeatherHistoryActivity extends AppCompatActivity implements View.On
     private Button btnAddWeather;
     private Date date = new Date();
     private SimpleDateFormat format1;
+    private NoteDataSource notesDataSource;     // Источник данных
+    private NoteDataReader noteDataReader;      // Читатель данных
+    private WeatherHistoryAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_history);
+        initDataSource();
         initViews();
         manageRecyclerView();
-        btnAddWeather.setOnClickListener(this);
+        //btnAddWeather.setOnClickListener(this);
     }
 
     public void onClick(View v) {
@@ -46,11 +50,15 @@ public class WeatherHistoryActivity extends AppCompatActivity implements View.On
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        WeatherHistoryAdapter adapter = new WeatherHistoryAdapter(weatherList);
+        adapter = new WeatherHistoryAdapter(noteDataReader);
         recyclerView.setAdapter(adapter);
 
     }
-
+    private void initDataSource() {
+        notesDataSource = new NoteDataSource(getApplicationContext());
+        notesDataSource.open();
+        noteDataReader = notesDataSource.getNoteDataReader();
+    }
     private void initViews() {
         btnAddWeather = findViewById(R.id.add_button);
         etEnteredWeather = findViewById(R.id.add_edit);

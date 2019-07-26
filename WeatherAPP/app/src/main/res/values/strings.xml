@@ -12,4 +12,5 @@
     <string name="pressure">Pressure</string>
     <string name="pressure_end">hpa</string>
     <string name="weather_histiry">Weather Histiry</string>
+    <string name="error">error</string>
 </resources>
