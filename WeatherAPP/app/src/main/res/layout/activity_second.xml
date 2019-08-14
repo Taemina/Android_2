@@ -102,6 +102,23 @@
         android:text="@string/weather_histiry"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-
+    <Button
+        android:id="@+id/cor_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="cor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+         />
+    <TextView
+        android:id="@+id/text_cor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorText"
+        android:text="cor"
+        android:textSize="@dimen/dimenTexTData"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/cor_button" />
 
 </android.support.constraint.ConstraintLayout>
